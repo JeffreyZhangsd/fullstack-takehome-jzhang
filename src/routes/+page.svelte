@@ -73,13 +73,18 @@
 		}
 
 		/* remove handleScroll if no values
-		sends few extra requests because when user scrolls too quickly, "from" might update before
-		we add 10 new users to userList
+		sends few extra requests because when user scrolls too quickly,
+		"from" might update before we add 10 new users to userList
+
+		This could be fixed by using backend to keep track of if there are more users to load
+		instead of using the front end
 		*/
 		if (from > userList.length + 10) {
 			outerDiv.removeEventListener('scroll', handleScroll);
+			console.log(from, userList.length);
 		} else {
 			outerDiv.addEventListener('scroll', handleScroll);
+			console.log(from, userList.length);
 		}
 	};
 </script>
