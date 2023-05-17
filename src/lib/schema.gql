@@ -5,6 +5,7 @@ type User {
 	email: String
 }
 
+# updated to accept arguments
 type Query {
-	users: [User]
+	users(from: Int!, limit: Int!): [User]
 }

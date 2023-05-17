@@ -12,7 +12,11 @@ const yogaApp = createYoga<RequestEvent>({
 		typeDefs: schema,
 		resolvers: {
 			Query: {
-				users: (source, args, context, info) => users
+				// added from and limit arguments to request
+				users: (source, { from, limit }, context, info) => {
+					const limitUsers = users.slice(from, from + limit);
+					return limitUsers;
+				}
 			}
 		}
 	}),
